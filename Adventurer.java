@@ -2,7 +2,7 @@ import java.util.Random;
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
-  private int Accuracy;
+  private int accuracy;
   private double damageMultiplier;
 
   //Abstract methods are meant to be implemented in child classes.
@@ -17,10 +17,7 @@ public abstract class Adventurer{
   public abstract int getSpecial();
   public abstract int getSpecialMax();
   public abstract void setSpecial(int n);
-  public abstract int getAccuracy();
-  public abstract void setAccuracy(int n);
-  public abstract double getDamageMultiplier();
-  public abstract void setDamageMultiplier(double n);
+
   //concrete method written using abstract methods.
   //refill special resource by amount, but only up to at most getSpecialMax()
   public int restoreSpecial(int n){
@@ -93,16 +90,32 @@ public abstract class Adventurer{
   public int getmaxHP(){
     return maxHP;
   }
+  
+  public abstract int getAccuracy(){
+    return accuracy;
+  }
+  
+  public abstract double getDamageMultiplier(){
+    return damageMultiplier;
+  }
+  
+  //Set Methods
   public void setmaxHP(int newMax){
     maxHP = newMax;
   }
 
-  //Set Methods
   public void setHP(int health){
     this.HP = health;
   }
 
   public void setName(String s){
     this.name = s;
+  }
+  public void setAccuracy(int n){
+    this.accuracy = n;
+  }
+
+  public abstract void setDamageMultiplier(double n){
+    this.damageMultiplier = n;
   }
 }
