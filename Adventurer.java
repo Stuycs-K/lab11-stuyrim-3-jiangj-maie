@@ -90,15 +90,15 @@ public abstract class Adventurer{
   public int getmaxHP(){
     return maxHP;
   }
-  
-  public abstract int getAccuracy(){
+
+  public int getAccuracy(){
     return accuracy;
   }
-  
-  public abstract double getDamageMultiplier(){
+
+  public double getDamageMultiplier(){
     return damageMultiplier;
   }
-  
+
   //Set Methods
   public void setmaxHP(int newMax){
     maxHP = newMax;
@@ -115,7 +115,7 @@ public abstract class Adventurer{
     this.accuracy = n;
   }
 
-  public abstract void setDamageMultiplier(double n){
+  public void setDamageMultiplier(double n){
     this.damageMultiplier = n;
   }
 }
