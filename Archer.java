@@ -13,7 +13,7 @@ public class Archer extends Adventurer{
 
   public String getSpecialName(){
     return "Ammo";
-  };
+  }
   //accessor methods
   public int getSpecial(){
     return special;
