@@ -32,4 +32,14 @@ public class Ninja extends Adventurer{
     return stealthMax;
   }
 
+  public String attack(Adventurer other){
+    other.applyDamage(3);
+    return "Attacked " + other + " for 3 damage!";
+  }
+
+  public String specialAttack(Adventurer other){
+    other.applyDamage(10);
+    setSpecial(getSpecial() - 10);
+    return "Sneak attacked " + other + " for 10 damage!";
+  }
 }
