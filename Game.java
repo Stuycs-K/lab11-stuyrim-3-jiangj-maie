@@ -14,6 +14,15 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    for (int row = 1; row < 31; row++) {
+      for (int column = 1; column < 81; column++) {
+        if ((row == 1 || row == 30) || (column == 1 || column == 80)) {
+          Text.go(row, column);
+          Text.colorize(Text.WHITE, Text.WHITE);
+          System.out.print(".");
+        }
+      }
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
