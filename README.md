@@ -19,7 +19,7 @@ Make a clear list of features that work/dont work
 ## Adventurer Subclasses
 
 ### Archer Class
-- HP: 20 
+- HP: 20
 + Special Resource: Ammo
 * Normal Attack: 5 Damage, consumes 1 Ammo
 - Special Attack (Rapid Fire): consumes all Ammo, does 3 Damage per Ammo
@@ -28,11 +28,11 @@ Make a clear list of features that work/dont work
 
 ***
 ### Ninja Class
-- HP: 15 
+- HP: 15
 + Special Resource: Stealth
 * Normal Attack: 3 Damage
-- Special Attack (Sneak Attack): consumes 10 Stealth, 10 Damage
-+ Support (Smoke Bomb): Enemy's accuracy is decreased for 1-3 turns(increased with Stealth)
+- Special Attack (Sneak Attack and Smoke Bomb): consumes 10 Stealth, deals 10 Damage, and decreases enemy's accuracy by 20%
++ Support: Stealth increases by 10
 * Passive: Stealth charges up over time, increases all damage dealt with Stealth
 
 ***
@@ -40,16 +40,14 @@ Make a clear list of features that work/dont work
 ### WereWolf (Boss)
 - HP: 50
 + Special Resource: Fury
-* Normal Attack (Bite): 4 Damage, restore 1 HP, gain 1 Fury; Enhanced: 6 Damage, restores 3 HP, gain 2 Fury 
+* Normal Attack (Bite): 4 Damage, restore 1 HP, gain 1 Fury; Enhanced: 6 Damage, restores 3 HP, gain 2 Fury
 - Special Attack (Howl): Consumes 15 Fury, Permanently increase damage by 1.25x; Enhanced: Consumes 8 Fury, Permanently increase damage by 1.5x, healing by 1.25x  
 + Support: Spawns a wolf to help; Enhanced: Spawns 2 wolves
-* Passive: Moonlight charges up over time, Max moonlight transforms WereWolf, Heals 10 HP and upgrades his abilities 
+* Passive: Moonlight charges up over time, Max moonlight transforms WereWolf, Heals 10 HP and upgrades his abilities
 
 ### Wolf (Minion)
 - HP: 3
 * Special Resource: None
 + Normal Attack (Chomp): 2 Damage
 - Special Attack: calls Normal Attack
-- Support: calls Normal Attack 
-
-
+- Support: calls Normal Attack
