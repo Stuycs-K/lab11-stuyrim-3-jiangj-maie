@@ -4,11 +4,11 @@ public class Boss extends Adventurer{
   private boolean transformed;
   private double healAmp;
 
+  public Boss(){
+    this("WereWolf", 50);
+  }
   public Boss(String name){
-    super(name);
-    setSpecial(0);
-    setTransformed(false);
-    setHealAmp(1.0);
+    this(name, 50);
   }
   public Boss(String name, int hp){
     super(name,hp);
@@ -45,13 +45,21 @@ public class Boss extends Adventurer{
     if (getTransformed()){
       int healing = (int)(Math.ceil(3 * getHealAmp()));
       other.applyDamage((int)(Math.ceil(6 * getDamageMultiplier())));
-      setHp(getHP() + healing);
+      if (getHP() + healing >= getmaxHP()){
+        setHP(maxHP());
+      }else{
+        setHp(getHP() + healing);
+      }
       setSpecial(getSpecial() + 2);
       return "Bit " + other + " for 6 damage!\n" + getSpecialName() + " increased by" + healing +  "\n HP increased by 3";
     }else{
       int healing = (int)(Math.ceil(1 * getHealAmp()));
       other.applyDamage((int)(Math.ceil(3 * getDamageMultiplier())));
-      setHP(getHP() + healing);
+      if (getHP() + healing >= getmaxHP()){
+        setHP(maxHP());
+      }else{
+        setHp(getHP() + healing);
+      }
       setSpecial(getSpecial() + 1);
       return "Bit " + other + " for 4 damage!\n" + getSpecialName() + " increased by 1\n HP increased by 1";
     }
