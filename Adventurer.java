@@ -71,6 +71,8 @@ public abstract class Adventurer{
     this.name = name;
     this.HP = hp;
     this.maxHP = hp;
+    setAccuracy(100);
+    setDamageMultiplier(1);
   }
 
   //toString method
