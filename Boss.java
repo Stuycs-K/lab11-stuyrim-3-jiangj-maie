@@ -50,7 +50,7 @@ public class Boss extends Adventurer{
       }else{
         setHp(getHP() + healing);
       }
-      setSpecial(getSpecial() + 2);
+      restoreSpecial(2);
       return "Bit " + other + " for 6 damage!\n" + getSpecialName() + " increased by" + healing +  "\n HP increased by 3";
     }else{
       int healing = (int)(Math.ceil(1 * getHealAmp()));
@@ -60,7 +60,7 @@ public class Boss extends Adventurer{
       }else{
         setHp(getHP() + healing);
       }
-      setSpecial(getSpecial() + 1);
+      restoreSpecial(1);
       return "Bit " + other + " for 4 damage!\n" + getSpecialName() + " increased by 1\n HP increased by 1";
     }
 
