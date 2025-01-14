@@ -116,6 +116,23 @@ public class Game{
 
       return input;
   }
+  public static ArrayList<Adventurer> generateRandomParty(int size){
+    ArrayList<Adventurer> randParty = new ArrayList<Adventurer>();
+    String[] adventurers = {"Archer", "Ninja", "CodeWarrior"};
+    for (int i = 0; i < size; i++){
+      String rand = adventurers[(int) (Math.random() * 3)];
+      if(rand.equals("Archer")){
+        randParty.add(new Archer());
+      }
+      else if(rand.equals("Ninja")){
+        randParty.add(new Ninja());
+      }
+      else if(rand.equals("CodeWarrior")){
+        randParty.add(new CodeWarrior());
+      }
+    }
+    return randParty;
+  }
 
   public static void quit(){
     Text.reset();
@@ -155,7 +172,7 @@ public class Game{
         party.add(new Archer());
       }
       else if(input.equals("Random") || input.equals("R")){
-
+        party = generateRandomParty(3);
       }
 
 
