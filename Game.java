@@ -134,6 +134,23 @@ public class Game{
 
       return input;
   }
+  public static ArrayList<Adventurer> generateRandomParty(int size){
+    ArrayList<Adventurer> randParty = new ArrayList<Adventurer>();
+    String[] adventurers = {"Archer", "Ninja", "CodeWarrior"};
+    for (int i = 0; i < size; i++){
+      String rand = adventurers[(int) (Math.random() * 3)];
+      if(rand.equals("Archer")){
+        randParty.add(new Archer());
+      }
+      else if(rand.equals("Ninja")){
+        randParty.add(new Ninja());
+      }
+      else if(rand.equals("CodeWarrior")){
+        randParty.add(new CodeWarrior());
+      }
+    }
+    return randParty;
+  }
 
   public static void quit(){
     Text.reset();
@@ -146,7 +163,8 @@ public class Game{
     Text.hideCursor();
     Text.clear();
 
-
+    Scanner in = new Scanner(System.in);
+    String input = "";
     //Things to attack:
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
     //If only 1 enemy is added it should be the boss class.
@@ -159,6 +177,24 @@ public class Game{
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<>();
+    for (int i = 0; i < 3; i++){ // loop to add 3 allies
+      String partyPreprompt = "Draft a player to add to your party: (A)rcher, (N)inja, (C)odeWarrior, (R)andom";
+      input = userInput(in);
+      if(input.equals("Archer") || input.equals("A")){
+        party.add(new Archer());
+      }
+      else if(input.equals("Ninja") || input.equals("N")){
+        party.add(new Ninja());
+      }
+      else if(input.equals("CodeWarrior") || input.equals("C")){
+        party.add(new Archer());
+      }
+      else if(input.equals("Random") || input.equals("R")){
+        party = generateRandomParty(3);
+      }
+
+
+    }
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -167,8 +203,8 @@ public class Game{
     int whichPlayer = 0;
     int whichOpponent = 0;
     int turn = 0;
-    String input = "";//blank to get into the main loop.
-    Scanner in = new Scanner(System.in);
+    input = "";//blank to get into the main loop.
+
     //Draw the window border
 
     //You can add parameters to draw screen!

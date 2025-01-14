@@ -1,6 +1,9 @@
 public class Archer extends Adventurer{
   private int special = 0;
   private int specialMax = 10;
+  public Archer(){
+    this("Joe", 20);
+  }
   public Archer(String name){
       super(name);
       setSpecial(3);
