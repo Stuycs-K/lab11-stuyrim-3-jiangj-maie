@@ -152,6 +152,7 @@ public class Game{
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+    enemies.add(new Boss()); // modify so code allows 2-3 adventurers later
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -173,6 +174,10 @@ public class Game{
       }
       else if(input.equals("Random") || input.equals("R")){
         party = generateRandomParty(3);
+      }
+      else{
+        System.out.println("Invalid Input!");
+        i--;
       }
 
 
@@ -209,14 +214,10 @@ public class Game{
 
         //Process user input for the last Adventurer:
         if(input.equals("attack") || input.equals("a")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
         }
         else if(input.equals("special") || input.equals("sp")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
