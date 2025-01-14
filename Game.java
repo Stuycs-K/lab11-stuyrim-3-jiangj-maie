@@ -49,6 +49,24 @@ public class Game{
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    for (int i = 0; i < height; i++){
+      int current = 0;
+      Text.go(row + height, col);
+      if (text.length() < width) {
+        if (i == 0) {
+          System.out.print(text);
+        }
+        else {
+          System.out.print(" " * width);
+        }
+      }
+      else {
+        Text.go(row + height, col);
+        System.out.print(text.substring(current * width, current * (width + 1)));
+        current++;
+      }
+    }
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
