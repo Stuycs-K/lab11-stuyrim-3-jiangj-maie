@@ -50,23 +50,19 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     for (int i = 0; i < height; i++){
-      int current = 0;
       Text.go(row + height, col);
-      if (text.length() < width) {
-        if (i == 0) {
-          System.out.print(text);
-        }
-        else {
-          System.out.print(" " * width);
-        }
+      if (text.length() > width) {
+        System.out.print(text.substring(0, width + 1));
+        text = text.substring(width + 1, width * 2 + 1)
       }
-      else {
-        Text.go(row + height, col);
-        System.out.print(text.substring(current * width, current * (width + 1)));
-        current++;
+      else if (text.length() < width) {
+          System.out.print(text + (" " * (width - text.length())));
+          text = "";
+        }
+      else if (text == "") {
+          System.out.print(" " * width);
       }
     }
-
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
