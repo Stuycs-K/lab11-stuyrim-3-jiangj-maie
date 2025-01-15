@@ -40,7 +40,7 @@ public class Ninja extends Adventurer{
   public String specialAttack(Adventurer other){
     other.applyDamage(10);
     setSpecial(getSpecial() - 10);
-    other.setAccuracy(other.getAccuracy() * 0.8);
+    other.setAccuracy((int)(other.getAccuracy() * 0.8));
     return "Sneak attacked " + other + " for 10 damage and deployed a smoke bomb to decrease " + other + "'s accuracy!";
   }
 
