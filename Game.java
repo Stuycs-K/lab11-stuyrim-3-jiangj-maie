@@ -53,7 +53,7 @@ public class Game{
       Text.go(row + height, col);
       if (text.length() > width) {
         System.out.print(text.substring(0, width + 1));
-        text = text.substring(width + 1, width * 2 + 1)
+        text = text.substring(width + 1, width * 2 + 1);
       }
       else if (text.length() < width) {
           System.out.print(text + (" " * (width - text.length())));
@@ -95,10 +95,11 @@ public class Game{
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
-
-      /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      //YOUR CODE HERE
-      /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+      String nameText = party.get(0) + "          "  + party.get(1) + "          "  + party.get(2) + "\n";
+      String HPText = "HP: " + party.get(0).getHP()  + "       HP: "  + party.get(1).getHP() + "       HP: "  +   party.get(2).getHP() + "\n";
+      String specialText = party.get(0).getSpecialName() + ": "+ party.get(0).getSpecial()  + "   " + party.get(1).getSpecialName() + ": "  + party.get(1).getSpecial() +"   " +party.get(2).getSpecialName() + ": "  +   party.get(2).getSpecial() + "\n";
+      Text.go(startRow, 0);
+      System.out.print(nameText + HPText + specialText);
     }
 
 
@@ -173,7 +174,7 @@ public class Game{
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
-    ArrayList<Adventurer> party = new ArrayList<>();
+    ArrayList<Adventurer> party = new ArrayList<Adventurer>();
     for (int i = 0; i < 3; i++){ // loop to add 3 allies
       String partyPreprompt = "Draft a player to add to your party: (A)rcher, (N)inja, (C)odeWarrior, (R)andom";
       input = userInput(in);
