@@ -231,9 +231,10 @@ public class Game{
           party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
         }
         else if(input.equals("special") || input.equals("sp")){
-          party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
+          party.get(whichPlayer).specialAttack(enemies.get(0)); // modify later to include selecting slot to target
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
+          party.get(whichPlayer).support();
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
