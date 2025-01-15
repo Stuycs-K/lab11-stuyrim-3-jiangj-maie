@@ -46,9 +46,9 @@ public class Boss extends Adventurer{
       int healing = (int)(Math.ceil(3 * getHealAmp()));
       other.applyDamage((int)(Math.ceil(6 * getDamageMultiplier())));
       if (getHP() + healing >= getmaxHP()){
-        setHP(maxHP());
+        setHP(getmaxHP());
       }else{
-        setHp(getHP() + healing);
+        setHP(getHP() + healing);
       }
       restoreSpecial(2);
       return "Bit " + other + " for 6 damage!\n" + getSpecialName() + " increased by" + healing +  "\n HP increased by 3";
@@ -56,9 +56,9 @@ public class Boss extends Adventurer{
       int healing = (int)(Math.ceil(1 * getHealAmp()));
       other.applyDamage((int)(Math.ceil(3 * getDamageMultiplier())));
       if (getHP() + healing >= getmaxHP()){
-        setHP(maxHP());
+        setHP(getmaxHP());
       }else{
-        setHp(getHP() + healing);
+        setHP(getHP() + healing);
       }
       restoreSpecial(1);
       return "Bit " + other + " for 4 damage!\n" + getSpecialName() + " increased by 1\n HP increased by 1";
