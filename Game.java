@@ -76,7 +76,17 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      return new CodeWarrior("Bob"+(int)(Math.random()*100));
+      String[] adventurers = {"Archer", "Ninja", "CodeWarrior"};
+        String rand = adventurers[(int) (Math.random() * 3)];
+        if(rand.equals("Archer")){
+          return new Archer();
+        }
+        else if(rand.equals("Ninja")){
+          return new Archer();
+        }
+        else if(rand.equals("CodeWarrior")){
+          return new Archer();
+        }
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
@@ -136,18 +146,8 @@ public class Game{
   }
   public static ArrayList<Adventurer> generateRandomParty(int size){
     ArrayList<Adventurer> randParty = new ArrayList<Adventurer>();
-    String[] adventurers = {"Archer", "Ninja", "CodeWarrior"};
     for (int i = 0; i < size; i++){
-      String rand = adventurers[(int) (Math.random() * 3)];
-      if(rand.equals("Archer")){
-        randParty.add(new Archer());
-      }
-      else if(rand.equals("Ninja")){
-        randParty.add(new Ninja());
-      }
-      else if(rand.equals("CodeWarrior")){
-        randParty.add(new CodeWarrior());
-      }
+      randParty.add(createRandomAdventurer());
     }
     return randParty;
   }
