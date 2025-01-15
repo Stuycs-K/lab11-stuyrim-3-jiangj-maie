@@ -56,11 +56,11 @@ public class Game{
         text = text.substring(width + 1, width * 2 + 1);
       }
       else if (text.length() < width) {
-          System.out.print(text + (" " * (width - text.length())));
+          System.out.print(text + (" " ));// modify later * (width - text.length())
           text = "";
         }
       else if (text == "") {
-          System.out.print(" " * width);
+          System.out.print(" " ); // modify later * width
       }
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -78,10 +78,10 @@ public class Game{
           return new Archer();
         }
         else if(rand.equals("Ninja")){
-          return new Archer();
+          return new Ninja();
         }
-        else if(rand.equals("CodeWarrior")){
-          return new Archer();
+        else {
+          return new CodeWarrior();
         }
     }
 
