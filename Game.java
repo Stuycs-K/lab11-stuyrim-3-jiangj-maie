@@ -107,11 +107,22 @@ public class Game{
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
     public static void drawParty(ArrayList<Adventurer> party,int startRow){// modify to make it work with size less than 3
-      String nameText = party.get(0) + "          "  + party.get(1) + "          "  + party.get(2) + "\n";
-      String HPText = "HP: " + party.get(0).getHP()  + "       HP: "  + party.get(1).getHP() + "       HP: "  +   party.get(2).getHP() + "\n";
-      String specialText = party.get(0).getSpecialName() + ": "+ party.get(0).getSpecial()  + "   " + party.get(1).getSpecialName() + ": "  + party.get(1).getSpecial() +"   " +party.get(2).getSpecialName() + ": "  +   party.get(2).getSpecial() + "\n";
-      Text.go(startRow, 0);
-      System.out.print(nameText + HPText + specialText);
+      if (party.size() > 0){
+        String nameText = party.get(0) + "";
+        String HPText = "HP: " + party.get(0).getHP();
+        String specialText = party.get(0).getSpecialName() + ": "+ party.get(0).getSpecial();
+        for (int i = 1; i < party.size(); i++){
+          nameText += "          "  + party.get(i);
+          HPText += "       HP: "  + party.get(i).getHP();
+          specialText = "   " + party.get(i).getSpecialName() + ": "  + party.get(i).getSpecial();
+        }
+        nameText += "\n";
+        HPText += "\n";
+        specialText += "\n";
+        Text.go(startRow, 0);
+        System.out.print(nameText + HPText + specialText);
+      }
+
     }
 
 
@@ -188,8 +199,7 @@ public class Game{
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
 
     enemies.add(new Boss()); // modify so code allows 2-3 adventurers later
-    enemies.add(new Wolf()); // testing, delete later
-    enemies.add(new Wolf()); // testing, delete later
+
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
