@@ -114,7 +114,8 @@ public class Game{
         for (int i = 1; i < party.size(); i++){
           nameText += "          "  + party.get(i);
           HPText += "       HP: "  + party.get(i).getHP();
-          specialText = "   " + party.get(i).getSpecialName() + ": "  + party.get(i).getSpecial();
+          specialText += "   " + party.get(i).getSpecialName() + ": "  + party.get(i).getSpecial();
+
         }
         nameText += "\n";
         HPText += "\n";
@@ -158,6 +159,8 @@ public class Game{
     drawBackground();
 
     //draw player party
+    drawParty(party, 30-3);
+    drawParty(enemies, 1);
 
     //draw enemy party
 
@@ -255,8 +258,8 @@ public class Game{
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
-      drawParty(party, 31-3);
-      drawParty(enemies, 1);
+      drawScreen();
+
       System.out.print(preprompt);
       //Read user input
       input = userInput(in);
@@ -266,7 +269,6 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn){
-
         //Process user input for the last Adventurer:
         if(input.equals("attack") || input.equals("a")){
           party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
