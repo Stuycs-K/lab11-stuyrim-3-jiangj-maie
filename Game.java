@@ -158,7 +158,8 @@ public class Game{
     drawBackground();
 
     //draw player party
-
+    drawParty(party, HEIGHT-3);
+    drawParty(enemies, 1);
     //draw enemy party
 
   }
@@ -255,8 +256,6 @@ public class Game{
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
-      drawParty(party, 31-3);
-      drawParty(enemies, 1);
       System.out.print(preprompt);
       //Read user input
       input = userInput(in);
