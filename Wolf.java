@@ -37,7 +37,7 @@ public class Wolf extends Adventurer{
 
   //heall or buff self
   public String support(){
-      return attack(other);
+      return support(Game.getParty().get((int)(Math.random()*3)));
   }
 
   //hurt or hinder the target adventurer, consume some special resource
