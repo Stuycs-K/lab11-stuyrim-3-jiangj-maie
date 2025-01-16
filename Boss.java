@@ -75,8 +75,16 @@ public class Boss extends Adventurer{
 
   //heall or buff self
   public String support(){
-      setSpecial(getSpecial() + 3);
-      return "Reloaded!\n" + getSpecialName() + " increased by 3";
+      if (getTransformed()){
+        while (Game.getEnemies().size() < 3){
+          Game.addEnemies(new Wolf());
+        }
+      }else{
+        if (Game.getEnemies().size() < 3){
+          Game.addEnemies(new Wolf());
+        }
+      }
+      return "Summoned Wolf!";
   }
 
   //hurt or hinder the target adventurer, consume some special resource

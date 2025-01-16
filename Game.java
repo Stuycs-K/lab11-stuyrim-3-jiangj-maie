@@ -4,6 +4,18 @@ public class Game{
   private static final int HEIGHT = 30;
   private static final int BORDER_COLOR = Text.BLACK;
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
+  private static ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+  private static ArrayList<Adventurer> party = new ArrayList<Adventurer>();
+
+  public static ArrayList<Adventurer> getEnemies(){
+    return enemies;
+  }
+  public static void addEnemies(Adventurer a){
+    enemies.add(a);
+  }
+  public static ArrayList<Adventurer> getParty(){
+    return party;
+  }
 
   public static void main(String[] args) {
     run();
@@ -94,7 +106,7 @@ public class Game{
     *Caffeine: 20 Mana: 10   Snark: 1
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
-    public static void drawParty(ArrayList<Adventurer> party,int startRow){
+    public static void drawParty(ArrayList<Adventurer> party,int startRow){// modify to make it work with size less than 3
       String nameText = party.get(0) + "          "  + party.get(1) + "          "  + party.get(2) + "\n";
       String HPText = "HP: " + party.get(0).getHP()  + "       HP: "  + party.get(1).getHP() + "       HP: "  +   party.get(2).getHP() + "\n";
       String specialText = party.get(0).getSpecialName() + ": "+ party.get(0).getSpecial()  + "   " + party.get(1).getSpecialName() + ": "  + party.get(1).getSpecial() +"   " +party.get(2).getSpecialName() + ": "  +   party.get(2).getSpecial() + "\n";
@@ -120,6 +132,7 @@ public class Game{
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
+    return ""; //modify later don't know what string to return
   }
 
 
@@ -165,9 +178,7 @@ public class Game{
   }
 
   public static void run(){
-    //Clear and initialize
-    Text.hideCursor();
-    Text.clear();
+
 
     Scanner in = new Scanner(System.in);
     String input = "";
@@ -175,17 +186,20 @@ public class Game{
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+
     enemies.add(new Boss()); // modify so code allows 2-3 adventurers later
+    enemies.add(new Wolf()); // testing, delete later
+    enemies.add(new Wolf()); // testing, delete later
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
-    ArrayList<Adventurer> party = new ArrayList<Adventurer>();
+
     for (int i = 0; i < 3; i++){ // loop to add 3 allies
       String partyPreprompt = "Draft a player to add to your party: (A)rcher, (N)inja, (C)odeWarrior, (R)andom";
+      System.out.println(partyPreprompt);
       input = userInput(in);
       if(input.equals("Archer") || input.equals("A")){
         party.add(new Archer());
@@ -198,6 +212,7 @@ public class Game{
       }
       else if(input.equals("Random") || input.equals("R")){
         party = generateRandomParty(3);
+        break;
       }
       else{
         System.out.println("Invalid Input!");
@@ -206,6 +221,9 @@ public class Game{
 
 
     }
+    //Clear and initialize
+    Text.hideCursor();
+    Text.clear();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -227,6 +245,9 @@ public class Game{
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+      drawParty(party, 31-3);
+      drawParty(enemies, 1);
+      System.out.print(preprompt);
       //Read user input
       input = userInput(in);
 
