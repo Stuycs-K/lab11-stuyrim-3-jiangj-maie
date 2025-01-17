@@ -51,3 +51,17 @@ Make a clear list of features that work/dont work
 + Normal Attack (Chomp): 2 Damage
 - Special Attack: calls Normal Attack
 - Support: calls Normal Attack
+
+## Bugs/Glitches/To Do List
+- [ ] Align drawParty within the borders
+- [ ] Accuracy field implementation
+- [ ] TextBox, check comments
+- [ ] ColorByPercent
+- [ ] Move cursor to bottom of terminal
+- [ ] Multiple Enemies
+- [ ] Invalid inputs
+- [ ] Support method implementation
+- [ ] Enemy's move
+- [ ] Kill Enemy/Player if HP reaches 0
+- [ ] Move History Display
+- [ ] Select slot to target for each move
