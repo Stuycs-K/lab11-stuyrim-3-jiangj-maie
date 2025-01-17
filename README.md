@@ -53,7 +53,7 @@ Make a clear list of features that work/dont work
 - Support: calls Normal Attack
 
 ## Bugs/Glitches/To Do List
-- [ ] Align drawParty within the borders
+- [x] Align drawParty within the borders
 - [ ] Accuracy field implementation
 - [ ] TextBox, check comments
 - [ ] ColorByPercent

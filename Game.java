@@ -117,11 +117,12 @@ public class Game{
           specialText += "   " + party.get(i).getSpecialName() + ": "  + party.get(i).getSpecial();
 
         }
-        nameText += "\n";
-        HPText += "\n";
-        specialText += "\n";
-        Text.go(startRow, 0);
-        System.out.print(nameText + HPText + specialText);
+        Text.go(startRow, 2);
+        System.out.print(nameText);
+        Text.go(startRow + 1, 2);
+        System.out.print(HPText);
+        Text.go(startRow + 2, 2);
+        System.out.print(specialText);
       }
 
     }
@@ -160,7 +161,7 @@ public class Game{
 
     //draw player party
     drawParty(party, 30-3);
-    drawParty(enemies, 1);
+    drawParty(enemies, 2);
 
     //draw enemy party
 
