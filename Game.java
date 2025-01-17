@@ -259,7 +259,7 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       drawScreen();
-
+      Text.go(30, 1);
       System.out.print(preprompt);
       //Read user input
       input = userInput(in);
