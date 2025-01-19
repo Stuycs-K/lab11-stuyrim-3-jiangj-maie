@@ -109,11 +109,11 @@ public class Game{
     public static void drawParty(ArrayList<Adventurer> party,int startRow){// modify to make it work with size less than 3
       if (party.size() > 0){
         String nameText = party.get(0) + "";
-        String HPText = "HP: " + party.get(0).getHP();
+        String HPText = "HP: " + colorByPercent(party.get(0).getHP(),party.get(0).getmaxHP());
         String specialText = party.get(0).getSpecialName() + ": "+ party.get(0).getSpecial();
         for (int i = 1; i < party.size(); i++){
           nameText += "          "  + party.get(i);
-          HPText += "       HP: "  + party.get(i).getHP();
+          HPText += "       HP: " + colorByPercent(party.get(i).getHP(),party.get(i).getmaxHP()); //"       HP: "  + party.get(i).getHP();
           specialText += "   " + party.get(i).getSpecialName() + ": "  + party.get(i).getSpecial();
 
         }
@@ -131,21 +131,21 @@ public class Game{
   //Use this to create a colorized number string based on the % compared to the max value.
   public static String colorByPercent(int hp, int maxHP){
     String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
-    double percent = hp / maxHP * 100;
+    double percent = (double)hp / maxHP * 100.0;
     if (percent < 25) {
-      Text.colorize(output, Text.RED);
+      return Text.colorize(output, Text.RED);
     }
     else if (percent < 75) {
-      Text.colorize(output, Text.YELLOW);
+      return Text.colorize(output, Text.YELLOW);
     }
     else {
-      Text.colorize(output, Text.WHITE);
+      return Text.colorize(output, Text.WHITE);
     }
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
-    return ""; //modify later don't know what string to return
+    
   }
 
 
@@ -161,10 +161,10 @@ public class Game{
 
     //draw player party
     drawParty(party, 30-3);
-    drawParty(enemies, 2);
+    
 
     //draw enemy party
-
+    drawParty(enemies, 2);
   }
 
   public static String userInput(Scanner in){
