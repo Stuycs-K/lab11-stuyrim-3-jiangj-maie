@@ -254,7 +254,7 @@ public class Game{
         party.add(new Ninja());
       }
       else if(input.equals("CodeWarrior") || input.equals("C")){
-        party.add(new Archer());
+        party.add(new CodeWarrior());
       }
       else if(input.equals("Random") || input.equals("R")){
         party = generateRandomParty(3);
@@ -292,10 +292,10 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       drawScreen();
-      Text.go(30, 1);
-      System.out.print(preprompt);
+      drawText(preprompt, 28, 2);
       String targettingPreprompt = "Select slot to target for ";
       //Read user input
+      drawText(">", 29, 2);
       input = userInput(in);
 
       //example debug statment
