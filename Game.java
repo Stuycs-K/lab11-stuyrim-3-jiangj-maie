@@ -26,12 +26,35 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    //outer borders
     for (int row = 1; row < 31; row++) {
       for (int column = 1; column < 81; column++) {
         if ((row == 1 || row == 30) || (column == 1 || column == 80)) {
           Text.go(row, column);
           System.out.print(Text.colorize(".", Text.WHITE));
         }
+      }
+    }
+    //inner horizontal borders
+    for (int column = 1; column < 81; column++) {
+      for (int row = 1; row < 31; row++) {
+        if (row == 5 || row == 23 || row == 27) {
+          Text.go(row, column);
+          System.out.print(Text.colorize(".", Text.WHITE));
+        }
+      }
+    }
+    //inner vertical borders
+    for (int row = 2; row < 5; row++) {
+      for (int column = 81/3; column < 81; column += (81/3)) {
+        Text.go(row, column);
+        System.out.print(Text.colorize(".", Text.WHITE));
+      }
+    }
+    for (int row = 24; row < 27; row++) {
+      for (int column = 81/3; column < 81; column += (81/3)) {
+        Text.go(row, column);
+        System.out.print(Text.colorize(".", Text.WHITE));
       }
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
