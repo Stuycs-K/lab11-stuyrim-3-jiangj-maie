@@ -131,24 +131,18 @@ public class Game{
     */
     public static void drawParty(ArrayList<Adventurer> party,int startRow){// modify to make it work with size less than 3
       if (party.size() > 0){
-        String nameText = party.get(0) + "";
-        String HPText = "HP: " + colorByPercent(party.get(0).getHP(),party.get(0).getmaxHP());
-        String specialText = party.get(0).getSpecialName() + ": "+ party.get(0).getSpecial();
-        for (int i = 1; i < party.size(); i++){
-          nameText += "          "  + party.get(i);
-          HPText += "       HP: " + colorByPercent(party.get(i).getHP(),party.get(i).getmaxHP()); //"       HP: "  + party.get(i).getHP();
-          specialText += "   " + party.get(i).getSpecialName() + ": "  + party.get(i).getSpecial();
-
+        for (int i = 0; i < party.size(); i++) {
+          int column = 2 + (81/3) * i;
+          String nameText = party.get(i) + "";
+          String HPText = "HP: " + colorByPercent(party.get(i).getHP(),party.get(i).getmaxHP());
+          String specialText = party.get(i).getSpecialName() + ": "+ party.get(i).getSpecial();
+          drawText(nameText, startRow, column);
+          drawText(HPText, startRow + 1, column);
+          drawText(specialText, startRow + 2, column);
         }
-        Text.go(startRow, 2);
-        System.out.print(nameText);
-        Text.go(startRow + 1, 2);
-        System.out.print(HPText);
-        Text.go(startRow + 2, 2);
-        System.out.print(specialText);
       }
-
     }
+
 
 
   //Use this to create a colorized number string based on the % compared to the max value.
@@ -183,7 +177,7 @@ public class Game{
     drawBackground();
 
     //draw player party
-    drawParty(party, 30-3);
+    drawParty(party, 24);
     
 
     //draw enemy party
