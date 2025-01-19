@@ -293,7 +293,6 @@ public class Game{
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       drawScreen();
       drawText(preprompt, 28, 2);
-      String targettingPreprompt = "Select slot to target for ";
       //Read user input
       drawText(">", 29, 2);
       input = userInput(in);
@@ -304,21 +303,16 @@ public class Game{
       //display event based on last turn's input
       if(partyTurn){
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
-          Text.go(30, 1);
-          System.out.print(targettingPreprompt + getParty().get(whichPlayer)+ "'s attack");
-          input = userInput(in);
-          partyMove = party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input)));
+        if(input.startsWith("a ") || input.startsWith("attack ")){
+          String[] attackInput = input.split(" ");
+          partyMove = party.get(whichPlayer).attack(enemies.get(Integer.parseInt(attackInput[1])));
         }
-        else if(input.equals("special") || input.equals("sp")){
-          Text.go(30, 1);
-          System.out.print(targettingPreprompt + getParty().get(whichPlayer)+ "'s special attack");
-          input = userInput(in);
-          partyMove = party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input)));
+        else if(input.startsWith("sp ") || input.startsWith("special ")){
+          String[] specialInput = input.split(" ");
+          partyMove = party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(specialInput[1])));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           String[] supportInput = input.split(" ");
-
           partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1])));
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
