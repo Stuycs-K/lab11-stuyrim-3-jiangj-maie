@@ -277,6 +277,7 @@ public class Game{
       drawScreen();
       Text.go(30, 1);
       System.out.print(preprompt);
+      String targettingPreprompt = "Select slot to target for ";
       //Read user input
       input = userInput(in);
 
@@ -287,13 +288,21 @@ public class Game{
       if(partyTurn){
         //Process user input for the last Adventurer:
         if(input.equals("attack") || input.equals("a")){
-          partyMove = party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
+          Text.go(30, 1);
+          System.out.print(targettingPreprompt + getParty().get(whichPlayer)+ "'s attack");
+          input = userInput(in);
+          partyMove = party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input)));
         }
         else if(input.equals("special") || input.equals("sp")){
-          partyMove = party.get(whichPlayer).specialAttack(enemies.get(0)); // modify later to include selecting slot to target
+          Text.go(30, 1);
+          System.out.print(targettingPreprompt + getParty().get(whichPlayer)+ "'s special attack");
+          input = userInput(in);
+          partyMove = party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input)));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
-          partyMove = party.get(whichPlayer).support();
+          String[] supportInput = input.split(" ");
+
+          partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1])));
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

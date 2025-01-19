@@ -56,12 +56,14 @@ Make a clear list of features that work/dont work
 - [x] Align drawParty within the borders
 - [ ] Accuracy field implementation
 - [ ] TextBox, check comments
-- [ ] ColorByPercent
-- [ ] Move cursor to bottom of terminal
+- [x] ColorByPercent
+- [x] Move cursor to bottom of terminal
 - [ ] Multiple Enemies
 - [ ] Invalid inputs
-- [ ] Support method implementation
-- [ ] Enemy's move
+- [x] Support method implementation
+- [ ] Support method targeting self uses default support
+- [x] Enemy's move
 - [ ] Kill Enemy/Player if HP reaches 0
 - [ ] Move History Display
-- [ ] Select slot to target for each move
+- [x] Select slot to target for each move
+- [ ] WereWolf transform
