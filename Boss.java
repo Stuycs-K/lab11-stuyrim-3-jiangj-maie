@@ -68,9 +68,7 @@ public class Boss extends Adventurer{
 
   //heall or buff the target adventurer
   public String support(Adventurer other){
-      other.setHP(other.getHP() + 10);
-      setSpecial(getSpecial()-1);
-      return "Shot " + other + " with a Healing Arrow!\n" + "Healed for 10 HP";
+      return support();
   }
 
   //heall or buff self

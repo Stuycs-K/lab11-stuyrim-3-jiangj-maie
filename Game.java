@@ -185,6 +185,21 @@ public class Game{
     }
     return randParty;
   }
+  public static String enemyEngine(Adventurer enemy){
+    String[] arr = {"a", "sp", "su"};
+    int randIndex = (int) (Math.random()*3);
+    int randSlot = (int) (Math.random() * getParty().size());
+    String move = arr[randIndex];
+    if (move.equals("a")){
+      return enemy.attack(getParty().get(randSlot));
+    }else if (move.equals("sp")){
+      return enemy.specialAttack(getParty().get(randSlot));
+    }else if (move.equals("su")) {
+      return enemy.support(getParty().get(randSlot));
+    }
+    return "something went wrong with enemyEngine";
+  }
+  
 
   public static void quit(){
     Text.reset();
@@ -267,18 +282,18 @@ public class Game{
 
       //example debug statment
       TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
-
+      String partyMove = "";
       //display event based on last turn's input
       if(partyTurn){
         //Process user input for the last Adventurer:
         if(input.equals("attack") || input.equals("a")){
-          party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
+          partyMove = party.get(whichPlayer).attack(enemies.get(0)); // modify later to include selecting slot to target
         }
         else if(input.equals("special") || input.equals("sp")){
-          party.get(whichPlayer).specialAttack(enemies.get(0)); // modify later to include selecting slot to target
+          partyMove = party.get(whichPlayer).specialAttack(enemies.get(0)); // modify later to include selecting slot to target
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
-          party.get(whichPlayer).support();
+          partyMove = party.get(whichPlayer).support();
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -289,6 +304,9 @@ public class Game{
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
+        drawScreen();
+        Text.go(15, 2);
+        System.out.print(partyMove);
 
 
         if(whichPlayer < party.size()){
@@ -308,7 +326,10 @@ public class Game{
         //done with one party member
       }else{
         //not the party turn!
-
+        
+        Text.go(15, 2);
+        System.out.print(enemyEngine(getEnemies().get(whichOpponent)));
+        drawScreen();
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
