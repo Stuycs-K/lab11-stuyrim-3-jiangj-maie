@@ -346,9 +346,14 @@ public class Game{
         //done with one party member
       }else{
         //not the party turn!
-        
+        Adventurer currentOpponent = getEnemies().get(whichOpponent);
+        if (currentOpponent instanceof Boss && turn == 4){
+          getEnemies().set(whichOpponent, new Boss("Transformed WereWolf", currentOpponent.getHP() + 10, true));
+          System.out.print("It's a full moon outside. \n WereWolf transformed and healed 10 HP");
+          drawScreen();
+        }
         Text.go(15, 2);
-        System.out.print(enemyEngine(getEnemies().get(whichOpponent)));
+        System.out.print(enemyEngine(currentOpponent));
         drawScreen();
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`

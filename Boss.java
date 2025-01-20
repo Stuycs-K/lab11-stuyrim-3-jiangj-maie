@@ -5,16 +5,17 @@ public class Boss extends Adventurer{
   private double healAmp;
 
   public Boss(){
-    this("WereWolf", 50);
+    this("WereWolf");
   }
   public Boss(String name){
-    this(name, 50);
+    this(name, 50, false);
   }
-  public Boss(String name, int hp){
+  public Boss(String name, int hp, boolean isTransformed){
     super(name,hp);
     setSpecial(0);
-    setTransformed(false);
+    setTransformed(isTransformed);
     setHealAmp(1.0);
+    setmaxHP(50);
   }
   public void setHealAmp(double a){
     healAmp = a;
