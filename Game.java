@@ -183,7 +183,7 @@ public class Game{
       startingIndex = history.length - 17;
     }
     int row = 7;
-    for (int i = startingIndex; i < history.length -1; i ++){
+    for (int i = startingIndex; i < history.length; i ++){
       drawText(history[i], row ,2);
       row++;
     }
@@ -346,9 +346,10 @@ public class Game{
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
-        drawScreen();
+        
         moveHistory += partyMove;
         drawHistory(moveHistory);
+        drawScreen();
         // Text.go(15, 2);
         // System.out.print(partyMove);
 
@@ -373,17 +374,19 @@ public class Game{
         Adventurer currentOpponent = getEnemies().get(whichOpponent);
         if (currentOpponent instanceof Boss && turn == 2){
           getEnemies().set(whichOpponent, new Boss("Transformed WereWolf", currentOpponent.getHP() + 10, currentOpponent.getSpecial(), true));
-          moveHistory += "It's a full moon outside. \n WereWolf transformed and healed 10 HP";
+          moveHistory += "It's a full moon outside. \n WereWolf transformed and healed 10 HP\n";
           // Text.go(15, 2);
           // System.out.print("It's a full moon outside. \n WereWolf transformed and healed 10 HP");
-          drawScreen();
           drawHistory(moveHistory);
+          drawScreen();
+          
         }
         // Text.go(15, 2);
         // System.out.print(enemyEngine(currentOpponent));
-        moveHistory += enemyEngine(currentOpponent);
-        drawScreen();
+        moveHistory += enemyEngine(currentOpponent) + "\n";
         drawHistory(moveHistory);
+        drawScreen();
+       
         
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
