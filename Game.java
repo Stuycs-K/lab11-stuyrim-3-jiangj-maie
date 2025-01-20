@@ -175,7 +175,18 @@ public class Game{
 
 
 
-
+  public static void drawHistory(String allHistory){
+    String[] history = allHistory.split("\n");
+    String displayed = "";
+    int startingIndex = 0;
+    if (history.length > 17){
+      startingIndex = history.length - 17;
+    }
+    for (int i = startingIndex; i < history.length; i ++){
+      displayed += history[i];
+    }
+    TextBox(7, 2, 78, 17, displayed);
+  }
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
@@ -304,8 +315,9 @@ public class Game{
       drawText(">", 29, 2);
       input = userInput(in);
 
-      //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      //example debug statment: readd later
+      TextBox(7, 2, 78, 17," partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      String moveHistory = "";
       String partyMove = "";
       //display event based on last turn's input
       if(partyTurn){
@@ -332,8 +344,10 @@ public class Game{
         //If no errors:
         whichPlayer++;
         drawScreen();
-        Text.go(15, 2);
-        System.out.print(partyMove);
+        moveHistory += partyMove;
+        drawHistory(moveHistory);
+        // Text.go(15, 2);
+        // System.out.print(partyMove);
 
 
         if(whichPlayer < party.size()){
@@ -356,13 +370,18 @@ public class Game{
         Adventurer currentOpponent = getEnemies().get(whichOpponent);
         if (currentOpponent instanceof Boss && turn == 2){
           getEnemies().set(whichOpponent, new Boss("Transformed WereWolf", currentOpponent.getHP() + 10, currentOpponent.getSpecial(), true));
-          Text.go(15, 2);
-          System.out.print("It's a full moon outside. \n WereWolf transformed and healed 10 HP");
+          moveHistory += "It's a full moon outside. \n WereWolf transformed and healed 10 HP";
+          // Text.go(15, 2);
+          // System.out.print("It's a full moon outside. \n WereWolf transformed and healed 10 HP");
           drawScreen();
+          drawHistory(moveHistory);
         }
-        Text.go(15, 2);
-        System.out.print(enemyEngine(currentOpponent));
+        // Text.go(15, 2);
+        // System.out.print(enemyEngine(currentOpponent));
+        moveHistory += enemyEngine(currentOpponent);
         drawScreen();
+        drawHistory(moveHistory);
+        
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
