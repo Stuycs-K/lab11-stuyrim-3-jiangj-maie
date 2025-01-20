@@ -85,13 +85,13 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     for (int i = 0; i < height; i++){
-      Text.go(row + height, col);
+      Text.go(row + i, col);
       String temp = "";
       if (text.length() > width) {
         System.out.print(text.substring(0, width + 1));
         text = text.substring(width + 1, width * 2 + 1);
       }
-      else if (text.length() < width) {
+      else if (text.length() <= width) {
           for (int j = 0; j < width - text.length(); j++){
             temp += " ";
           }
@@ -177,15 +177,17 @@ public class Game{
 
   public static void drawHistory(String allHistory){
     String[] history = allHistory.split("\n");
-    String displayed = "";
+    // String displayed = "";
     int startingIndex = 0;
     if (history.length > 17){
       startingIndex = history.length - 17;
     }
-    for (int i = startingIndex; i < history.length; i ++){
-      displayed += history[i];
+    int row = 7;
+    for (int i = startingIndex; i < history.length -1; i ++){
+      drawText(history[i], row ,2);
+      row++;
     }
-    TextBox(7, 2, 78, 17, displayed);
+    // TextBox(7, 2, 78, 17, displayed);
   }
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
@@ -306,6 +308,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
+    String moveHistory = "";
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
@@ -316,23 +319,23 @@ public class Game{
       input = userInput(in);
 
       //example debug statment: readd later
-      TextBox(7, 2, 78, 17," partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
-      String moveHistory = "";
+      TextBox(6, 2, 78, 17," partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      
       String partyMove = "";
       //display event based on last turn's input
       if(partyTurn){
         //Process user input for the last Adventurer:
         if(input.startsWith("a ") || input.startsWith("attack ")){
           String[] attackInput = input.split(" ");
-          partyMove = party.get(whichPlayer).attack(enemies.get(Integer.parseInt(attackInput[1])));
+          partyMove = party.get(whichPlayer).attack(enemies.get(Integer.parseInt(attackInput[1]))) + "\n";
         }
         else if(input.startsWith("sp ") || input.startsWith("special ")){
           String[] specialInput = input.split(" ");
-          partyMove = party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(specialInput[1])));
+          partyMove = party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(specialInput[1]))) + "\n";
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           String[] supportInput = input.split(" ");
-          partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1])));
+          partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1]))) + "\n";
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
