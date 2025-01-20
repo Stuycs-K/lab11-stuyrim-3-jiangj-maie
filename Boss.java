@@ -8,11 +8,11 @@ public class Boss extends Adventurer{
     this("WereWolf");
   }
   public Boss(String name){
-    this(name, 50, false);
+    this(name, 50, 0, false);
   }
-  public Boss(String name, int hp, boolean isTransformed){
+  public Boss(String name, int hp, int startingSpecial, boolean isTransformed){
     super(name,hp);
-    setSpecial(0);
+    setSpecial(startingSpecial);
     setTransformed(isTransformed);
     setHealAmp(1.0);
     setmaxHP(50);
