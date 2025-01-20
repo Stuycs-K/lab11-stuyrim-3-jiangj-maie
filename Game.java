@@ -86,16 +86,23 @@ public class Game{
     //YOUR CODE HERE
     for (int i = 0; i < height; i++){
       Text.go(row + height, col);
+      String temp = "";
       if (text.length() > width) {
         System.out.print(text.substring(0, width + 1));
         text = text.substring(width + 1, width * 2 + 1);
       }
       else if (text.length() < width) {
-          System.out.print(text + (" " ));// modify later * (width - text.length())
+          for (int j = 0; j < width - text.length(); j++){
+            temp += " ";
+          }
+          System.out.print(text + (temp));
           text = "";
         }
       else if (text == "") {
-          System.out.print(" " ); // modify later * width
+          for (int j = 0; j < width; j++){
+            temp += " ";
+          }
+          System.out.print(temp ); 
       }
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -347,8 +354,9 @@ public class Game{
       }else{
         //not the party turn!
         Adventurer currentOpponent = getEnemies().get(whichOpponent);
-        if (currentOpponent instanceof Boss && turn == 4){
-          getEnemies().set(whichOpponent, new Boss("Transformed WereWolf", currentOpponent.getHP() + 10, true));
+        if (currentOpponent instanceof Boss && turn == 2){
+          getEnemies().set(whichOpponent, new Boss("Transformed WereWolf", currentOpponent.getHP() + 10, currentOpponent.getSpecial(), true));
+          Text.go(15, 2);
           System.out.print("It's a full moon outside. \n WereWolf transformed and healed 10 HP");
           drawScreen();
         }

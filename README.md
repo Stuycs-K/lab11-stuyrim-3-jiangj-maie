@@ -55,7 +55,7 @@ Make a clear list of features that work/dont work
 ## Bugs/Glitches/To Do List
 - [x] Align drawParty within the borders
 - [ ] Accuracy field implementation
-- [ ] TextBox, check comments
+- [x] TextBox, check comments
 - [x] ColorByPercent
 - [x] Move cursor to bottom of terminal
 - [ ] Multiple Enemies
@@ -66,4 +66,4 @@ Make a clear list of features that work/dont work
 - [ ] Kill Enemy/Player if HP reaches 0
 - [ ] Move History Display
 - [x] Select slot to target for each move
-- [ ] WereWolf transform
+- [x] WereWolf transform
