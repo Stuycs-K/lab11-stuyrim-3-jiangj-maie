@@ -182,7 +182,7 @@ public class Game{
     if (history.length > 17){
       startingIndex = history.length - 17;
     }
-    int row = 7;
+    int row = 6;
     for (int i = startingIndex; i < history.length; i ++){
       drawText(history[i], row ,2);
       row++;
@@ -203,6 +203,7 @@ public class Game{
     //draw enemy party
     drawParty(enemies, 2);
   }
+  
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
@@ -319,11 +320,18 @@ public class Game{
       input = userInput(in);
 
       //example debug statment: readd later
-      TextBox(6, 2, 78, 17," partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
-      
+      TextBox(1, 2, 78, 17," partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      if (getParty().size() == 0){
+          System.out.println("Your party has been defeated!");
+          break;
+      }else if (getEnemies().size() == 0){
+        System.out.println("You defeated your enemies! You Win!");
+        break;
+      }
       String partyMove = "";
       //display event based on last turn's input
       if(partyTurn){
+        
         //Process user input for the last Adventurer:
         if(input.startsWith("a ") || input.startsWith("attack ")){
           String[] attackInput = input.split(" ");
@@ -345,7 +353,13 @@ public class Game{
 
         //You should decide when you want to re-ask for user input
         //If no errors:
-        whichPlayer++;
+        for (int i = 0; i < getEnemies().size(); i++){
+          if (getEnemies().get(i).getHP() <= 0){
+            moveHistory += getEnemies().get(i) + " has been slain! \n";
+            getEnemies().remove(i);
+            i--;
+          }
+        }
         
         moveHistory += partyMove;
         drawHistory(moveHistory);
@@ -353,7 +367,7 @@ public class Game{
         // Text.go(15, 2);
         // System.out.print(partyMove);
 
-
+        whichPlayer++;
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
@@ -377,13 +391,23 @@ public class Game{
           moveHistory += "It's a full moon outside. \n WereWolf transformed and healed 10 HP\n";
           // Text.go(15, 2);
           // System.out.print("It's a full moon outside. \n WereWolf transformed and healed 10 HP");
+          
           drawHistory(moveHistory);
           drawScreen();
           
         }
         // Text.go(15, 2);
         // System.out.print(enemyEngine(currentOpponent));
+        // check if party member gets killed
         moveHistory += enemyEngine(currentOpponent) + "\n";
+        for (int i = 0; i < getParty().size(); i++){
+          if (getParty().get(i).getHP() <= 0){
+            moveHistory += getParty().get(i) + " has been slain! \n";
+            getParty().remove(i);
+            i--;
+          }
+        }
+        
         drawHistory(moveHistory);
         drawScreen();
        
@@ -415,6 +439,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
+      
       drawScreen();
 
 
