@@ -52,18 +52,19 @@ Make a clear list of features that work/dont work
 - Special Attack: calls Normal Attack
 - Support: calls Normal Attack
 
-## Bugs/Glitches/To Do List
-- [x] Align drawParty within the borders
-- [ ] Accuracy field implementation
-- [x] TextBox, check comments
-- [x] ColorByPercent
-- [x] Move cursor to bottom of terminal
-- [ ] Multiple Enemies
-- [ ] Invalid inputs
-- [x] Support method implementation
-- [ ] Support method targeting self uses default support
-- [x] Enemy's move
-- [ ] Kill Enemy/Player if HP reaches 0
-- [ ] Move History Display
-- [x] Select slot to target for each move
-- [x] WereWolf transform
+## Bugs/Glitches/To Do List/Features
+- :white_check_mark: Align drawParty within the borders
+- :x: Accuracy field implementation
+- :white_check_mark: TextBox, check comments
+- :white_check_mark: ColorByPercent
+- :white_check_mark: Move cursor to bottom of terminal
+- :x: Multiple Enemies
+- :x: Invalid inputs
+- :white_check_mark: Support method implementation
+- :x: Support method targeting self uses default support
+- :white_check_mark: Enemy's move
+- :white_check_mark: Kill Enemy/Player if HP reaches 0
+- :white_check_mark: Move History Display
+- :white_check_mark: Select slot to target for each move
+- :white_check_mark: WereWolf transform
+- :x: update enter input message
