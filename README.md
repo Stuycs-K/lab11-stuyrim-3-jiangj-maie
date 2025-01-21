@@ -61,7 +61,7 @@ Make a clear list of features that work/dont work
 - :x: Multiple Enemies
 - :x: Invalid inputs
 - :white_check_mark: Support method implementation
-- :x: Support method targeting self uses default support
+- :white_check_mark: Support method targeting self uses default support
 - :white_check_mark: Enemy's move
 - :white_check_mark: Kill Enemy/Player if HP reaches 0
 - :white_check_mark: Move History Display
