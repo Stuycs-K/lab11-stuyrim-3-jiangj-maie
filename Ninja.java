@@ -3,7 +3,7 @@ public class Ninja extends Adventurer{
   private int stealthMax;
 
   public Ninja(String name, int hp){
-    super(name, hp);
+    super(name + " the Ninja", hp);
     stealth = 5;
     stealthMax = 10;
   }
