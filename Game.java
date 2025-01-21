@@ -363,18 +363,18 @@ public class Game{
         //Process user input for the last Adventurer:
         if(input.startsWith("a ") || input.startsWith("attack ")){
           String[] attackInput = input.split(" ");
-          partyMove = party.get(whichPlayer).attack(enemies.get(Integer.parseInt(attackInput[1]))) + "\n";
+          partyMove = party.get(whichPlayer).attack(enemies.get(Integer.parseInt(attackInput[1]))) + "\n\n";
         }
         else if(input.startsWith("sp ") || input.startsWith("special ")){
           String[] specialInput = input.split(" ");
-          partyMove = party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(specialInput[1]))) + "\n";
+          partyMove = party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(specialInput[1]))) + "\n\n";
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           String[] supportInput = input.split(" ");
           if (Integer.parseInt(supportInput[1]) == whichPlayer){
-            partyMove = party.get(whichPlayer).support() + "\n";
+            partyMove = party.get(whichPlayer).support() + "\n\n";
           }else{
-            partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1]))) + "\n";
+            partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1]))) + "\n\n";
           }
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
@@ -387,7 +387,7 @@ public class Game{
         //If no errors:
         for (int i = 0; i < getEnemies().size(); i++){
           if (getEnemies().get(i).getHP() <= 0){
-            moveHistory += getEnemies().get(i) + " has been slain! \n";
+            moveHistory += getEnemies().get(i) + " has been slain! \n\n";
             getEnemies().remove(i);
             i--;
           }
@@ -420,7 +420,7 @@ public class Game{
         Adventurer currentOpponent = getEnemies().get(whichOpponent);
         if (currentOpponent instanceof Boss && turn == 2){
           getEnemies().set(whichOpponent, new Boss("Transformed WereWolf", currentOpponent.getHP() + 10, currentOpponent.getSpecial(), true));
-          moveHistory += "It's a full moon outside. \n WereWolf transformed and healed 10 HP\n";
+          moveHistory += "It's a full moon outside. \n WereWolf transformed and healed 10 HP\n\n";
           // Text.go(15, 2);
           // System.out.print("It's a full moon outside. \n WereWolf transformed and healed 10 HP");
           
@@ -431,10 +431,10 @@ public class Game{
         // Text.go(15, 2);
         // System.out.print(enemyEngine(currentOpponent));
         // check if party member gets killed
-        moveHistory += enemyEngine(currentOpponent) + "\n";
+        moveHistory += enemyEngine(currentOpponent) + "\n\n";
         for (int i = 0; i < getParty().size(); i++){
           if (getParty().get(i).getHP() <= 0){
-            moveHistory += getParty().get(i) + " has been slain! \n";
+            moveHistory += getParty().get(i) + " has been slain! \n\n";
             getParty().remove(i);
             i--;
           }
