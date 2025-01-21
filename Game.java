@@ -343,7 +343,11 @@ public class Game{
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           String[] supportInput = input.split(" ");
-          partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1]))) + "\n";
+          if (Integer.parseInt(supportInput[1]) == whichPlayer){
+            partyMove = party.get(whichPlayer).support() + "\n";
+          }else{
+            partyMove = party.get(whichPlayer).support(getParty().get(Integer.parseInt(supportInput[1]))) + "\n";
+          }
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
