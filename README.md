@@ -58,7 +58,7 @@ Make a clear list of features that work/dont work
 - :white_check_mark: TextBox, check comments
 - :white_check_mark: ColorByPercent
 - :white_check_mark: Move cursor to bottom of terminal
-- :x: Multiple Enemies
+- :white_check_mark: Multiple Enemies
 - :x: Invalid inputs
 - :white_check_mark: Support method implementation
 - :white_check_mark: Support method targeting self uses default support
