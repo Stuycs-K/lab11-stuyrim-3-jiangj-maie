@@ -255,7 +255,6 @@ public class Game{
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
 
-    enemies.add(new Boss()); // modify so code allows 2-3 adventurers later
 
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
@@ -279,6 +278,35 @@ public class Game{
       }
       else if(input.equals("Random") || input.equals("R")){
         party = generateRandomParty(3);
+        break;
+      }
+      else{
+        System.out.println("Invalid Input!");
+        i--;
+      }
+
+
+    }
+
+    for (int i = 0; i < 3; i++){ // loop to add 3 enemies or boss
+      String enemyPreprompt = "Draft an enemy to add to the enemy team: (A)rcher, (N)inja, (C)odeWarrior, (R)andom, (B)oss";
+      System.out.println(enemyPreprompt);
+      input = userInput(in);
+      if(input.equals("Archer") || input.equals("A")){
+        enemies.add(new Archer());
+      }
+      else if(input.equals("Ninja") || input.equals("N")){
+        enemies.add(new Ninja());
+      }
+      else if(input.equals("CodeWarrior") || input.equals("C")){
+        enemies.add(new CodeWarrior());
+      }
+      else if(input.equals("Random") || input.equals("R")){
+        enemies = generateRandomParty(3);
+        break;
+      }else if(input.equals("Boss") || input.equals("B")){
+        enemies = new ArrayList<Adventurer>();
+        enemies.add(new Boss());
         break;
       }
       else{
